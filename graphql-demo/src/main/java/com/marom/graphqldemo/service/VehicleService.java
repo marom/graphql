@@ -15,6 +15,7 @@ import java.util.stream.Collectors;
 public class VehicleService {
 
     private final VehicleRepository vehicleRepository ;
+
     public VehicleService(final VehicleRepository vehicleRepository) {
         this.vehicleRepository = vehicleRepository ;
     }
