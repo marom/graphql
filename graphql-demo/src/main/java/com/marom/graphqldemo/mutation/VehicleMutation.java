@@ -2,6 +2,7 @@ package com.marom.graphqldemo.mutation;
 
 import com.coxautodev.graphql.tools.GraphQLMutationResolver;
 import com.marom.graphqldemo.dao.entity.Vehicle;
+import com.marom.graphqldemo.service.VehicleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
