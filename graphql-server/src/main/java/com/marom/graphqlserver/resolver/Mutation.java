@@ -7,7 +7,6 @@ import com.marom.graphqlserver.model.Room;
 import com.marom.graphqlserver.repository.HotelRepository;
 import com.marom.graphqlserver.repository.PaymentRepository;
 import com.marom.graphqlserver.repository.RoomRepository;
-import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 import reactor.core.publisher.Mono;
 
@@ -15,12 +14,17 @@ import java.time.LocalDateTime;
 import java.util.Optional;
 
 @Component
-@RequiredArgsConstructor
 public class Mutation implements GraphQLMutationResolver {
 
     private final HotelRepository hotelRepository;
     private final RoomRepository roomRepository;
     private final PaymentRepository paymentRepository;
+
+    public Mutation(HotelRepository hotelRepository, RoomRepository roomRepository, PaymentRepository paymentRepository) {
+        this.hotelRepository = hotelRepository;
+        this.roomRepository = roomRepository;
+        this.paymentRepository = paymentRepository;
+    }
 
     public Optional<Hotel> newHotel(String name, String address) {
         Hotel hotel = new Hotel();
