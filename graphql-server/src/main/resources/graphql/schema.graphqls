@@ -1,0 +1,52 @@
+type Hotel {
+    id: ID!
+    # Hotel name
+    name: String!
+    # Hotel address
+    address: String!
+    # Date of the hotel registry creation
+    creationDate: String!
+    # List of rooms for a particular hotel
+    room: [Room]!
+}
+
+type Room {
+    id: ID!
+    # Room description
+    type: String!
+    # How many people can sleep in the room
+    occupants: Int!
+    hotelId: ID!
+}
+
+type Payment {
+    id: ID!
+    # Payment method name
+    name: String!
+}
+
+# The Root Query for the application
+type Query {
+    # Retrieves all hotels
+    findAllHotels: [Hotel]
+    # Retrieves a Hotel given an ID (eg: '1, 4, 12')
+    findHotelById(id: ID): Hotel
+    # Number of Hotel available
+    countHotels: Int
+    # Finds all payment methods
+    findAllPayments: [Payment]
+}
+
+# The Root Mutation for the application
+type Mutation {
+    # Creates new hotel
+    newHotel(name: String!, address: String!): Hotel
+    # Creates new room
+    newRoom(type: String!, occupants: Int!, hotelId: ID!): Room
+    # Creates new payment method
+    newPayment(name: String!): Payment
+}
+
+type Subscription {
+    getNewHotel: Hotel!
+}
